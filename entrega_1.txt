@@ -1,4 +1,7 @@
-- Impresion inicial del problema: Es un problema en donde se necesita hacer un lavado de prendas en lavadoras en el menor tiempo posible, sabiendo que no todas las prendas se pueden lavar juntas
+- Impresion inicial del problema: Es un problema en donde se necesita hacer un lavado de prendas en lavadoras en el menor tiempo posible, sabiendo que no todas las prendas se pueden lavar juntas.
+
 -Ideas de como lo van a intentar resolver: Lo primero que se me ocurrio es hacer una matriz en donde complete con un 1 si se pueden lavar juntos o un 0 si no. Luego con un array administrar las lavadoras, recorrer todas las prendas e ir asignandolas a cada lavarropas chequeando que se puedan lavar en ese lavarropas con la ropa que ya fue asignada alli.
--Comentarios sobre los cambios que hagan en el codigo a medida que intentan mejorar el resultado: Para intentar mejorar mis resultados ademas de asignarle un lavarropas a cada prenda voy a intentar asignarle un lavarropas que tenga el mismo tiempo, o mayor, de lavado que el que necesita mi prenda
--Comentarios finales
+
+-Comentarios sobre los cambios que hagan en el codigo a medida que intentan mejorar el resultado: Para intentar mejorar mis resultados ademas de asignarle un lavarropas a cada prenda voy a intentar asignarle un lavarropas que tenga el mismo tiempo de lavado, o mayor, que el que necesita mi prenda asi evitar hacer muchos lavados de mucho tiempo
+
+-Comentarios finales: Luego de varias pruebas, intentando optimizar mi algoritmo para agrupar las prendas y lograr un tiempo de lavado menor, no pude obtener un mejor resultado que el primero (Gasto: 61). Al intentar tener en cuenta el tiempo de lavado de las prendas y no solo agruparlas entre las que podian compartir lavarropas, obtuve el mismo gasto que cuando no considere el tiempo de lavado.
