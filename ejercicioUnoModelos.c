@@ -55,7 +55,6 @@ int main(int argc, char *argv[])
         int lavadoraElegida = 0;
         while (lavadoraElegida == 0)
         {
-            for(int lavarropas = 0; lavarropas < 20; )
             lavadoraElegida = lavarropasPosibles[k];
             k = k + 1;
         }
@@ -68,12 +67,13 @@ int main(int argc, char *argv[])
     if (out_file == NULL)
     {
         printf("Error! Could not open file\n");
-        exit(-1); 
+        exit(-1); // must include
     }
 
     // write to file 
     for (int i = 0; i < 20; i++)
     {
+        printf("Prenda: %d en lavarropas: %d \n", i+1, prendasEnLavarropa[i]);
         fprintf(out_file, "%d %d\n", i + 1, prendasEnLavarropa[i]); // write to file
     }
 
