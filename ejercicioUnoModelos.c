@@ -1,22 +1,23 @@
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
+const sizeTxt = 385;
 
 int main(int argc, char *argv[])
 {
-    int prendasEnLavarropa[20];
-    int matrix[20][20];
-    int tiemposLavado[20];
-    for (int i = 0; i < 20; i++)
+    int prendasEnLavarropa[sizeTxt];
+    int matrix[sizeTxt][sizeTxt];
+    int tiemposLavado[sizeTxt];
+    for (int i = 0; i < sizeTxt; i++)
     {
-        for (int j = 0; j < 20; j++)
+        for (int j = 0; j < 385; j++)
         {
             matrix[i][j] = 1;
         }
         prendasEnLavarropa[i] = 0; //A todas las prendas las pongo como que todavia no tienen asignadas ningun lavarropas
     }
     char line[1000];
-    FILE *laundryFile = fopen("lavanderia.txt", "r");
+    FILE *laundryFile = fopen("lavanderia2.txt", "r");
     while (fgets(line, sizeof(line), laundryFile))
     {
         char caracter;
@@ -35,11 +36,11 @@ int main(int argc, char *argv[])
         }
     }
 
-    int lavarropasPosibles[20];
+    int lavarropasPosibles[sizeTxt];
 
-    for (int prendaALavar = 0; prendaALavar < 20; prendaALavar++)
+    for (int prendaALavar = 0; prendaALavar < sizeTxt; prendaALavar++)
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < sizeTxt; i++)
         {
             lavarropasPosibles[i] = 1; //Pongo en 1 a todos los lavarropas para que esten disponibles
         }
@@ -71,7 +72,7 @@ int main(int argc, char *argv[])
     }
 
     // write to file 
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < sizeTxt; i++)
     {
         printf("Prenda: %d en lavarropas: %d \n", i+1, prendasEnLavarropa[i]);
         fprintf(out_file, "%d %d\n", i + 1, prendasEnLavarropa[i]); // write to file
