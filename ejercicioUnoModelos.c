@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
     int matrix[sizeTxt][sizeTxt];
     int tiemposLavadoPrenda[sizeTxt];
     int tiemposLavadoLavarropa[sizeTxt];
+    int tiempoMaxDeLavado = 0;
     for (int i = sizeTxt; i > 0; i--)
     {
         for (int j = 0; j < sizeTxt; j++)
@@ -30,13 +31,75 @@ int main(int argc, char *argv[])
             sscanf(line, "%c %d %d", &caracter, &param1, &param2);
 
             matrix[param1 - 1][param2 - 1] = 0; //escribo un 0 si son incompatibles
+            matrix[param2 - 1][param1 - 1] = 0; //escribo un 0 si son incompatibles
+
         }
         if (caracter == 'n')
         { //n n1 c1 "n1" es el número de prenda y "c1" el tiempo de lavado
             sscanf(line, "%c %d %d", &caracter, &param1, &param2);
             tiemposLavadoPrenda[param1 - 1] = param2;
+
+            if(tiempoMaxDeLavado < param2){
+                tiempoMaxDeLavado = param2;
+            }
         }
     }
+
+    for(tiempoMaxDeLavado; tiempoMaxDeLavado >= 0; tiempoMaxDeLavado--){
+
+        int lavarropasPosibles[sizeTxt];
+        for(int prendaALavar = 0; prendaALavar < sizeTxt; prendaALavar++){
+            if(prendasEnLavarropa[prendaALavar] == 0 && tiemposLavadoPrenda[prendaALavar] == tiempoMaxDeLavado){
+                for (int i = 0; i < sizeTxt; i++)
+                {
+                    lavarropasPosibles[i] = 1; //Pongo en 1 a todos los lavarropas para que esten disponibles
+                }
+                for (int i = 0; i < sizeTxt; i++)
+                {
+                    if (matrix[i][prendaALavar] == 0)
+                    {
+                        lavarropasPosibles[(prendasEnLavarropa[i]) - 1] = 0;
+                    }
+                }
+                int k = 0;
+                int lavadoraElegida = 0;
+                while (lavadoraElegida == 0)
+                {
+
+                    lavadoraElegida = lavarropasPosibles[k];
+                    k = k + 1;
+                }
+                prendasEnLavarropa[prendaALavar] = k;
+            }
+        }
+    }
+
+
+
+    
+
+    FILE *out_file = fopen("prendasYLavados.txt", "w"); // write only
+
+    // test for files not existing.
+    if (out_file == NULL)
+    {
+        printf("Error! Could not open file\n");
+        exit(-1); // must include
+    }
+
+    // write to file
+    for (int i = 0; i < sizeTxt; i++)
+    {
+        printf("Prenda: %d en lavarropas: %d \n", i + 1, prendasEnLavarropa[i]);
+        fprintf(out_file, "%d %d\n", i + 1, prendasEnLavarropa[i]); // write to file
+    }
+
+    return 0;
+}
+
+int solucion1(){
+
+/*
 
     int lavarropasPosibles[sizeTxt];
 
@@ -54,7 +117,7 @@ int main(int argc, char *argv[])
                 lavarropasPosibles[(prendasEnLavarropa[prendaYaLavada]) - 1] = 0;
             }
         }
-        /*
+        
         int k = 0;
         int lavadoraElegida = 0;
         while (lavadoraElegida == 0)
@@ -64,7 +127,7 @@ int main(int argc, char *argv[])
             k = k + 1;
         }
         prendasEnLavarropa[prendaALavar] = k;
-        */
+        
 
         int tiempoMaximoDeLavado = 0;
         int lavarropasPosibleDeTiempoMaximo = -1;
@@ -98,21 +161,6 @@ int main(int argc, char *argv[])
 
     }
 
-    FILE *out_file = fopen("prendasYLavados.txt", "w"); // write only
+*/
 
-    // test for files not existing.
-    if (out_file == NULL)
-    {
-        printf("Error! Could not open file\n");
-        exit(-1); // must include
-    }
-
-    // write to file
-    for (int i = 0; i < sizeTxt; i++)
-    {
-        printf("Prenda: %d en lavarropas: %d \n", i + 1, prendasEnLavarropa[i]);
-        fprintf(out_file, "%d %d\n", i + 1, prendasEnLavarropa[i]); // write to file
-    }
-
-    return 0;
 }
