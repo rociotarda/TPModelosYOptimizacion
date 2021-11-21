@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 
         int lavarropasPosibles[sizeTxt];
         for(int prendaALavar = 0; prendaALavar < sizeTxt; prendaALavar++){
-            if(prendasEnLavarropa[prendaALavar] == 0 && tiemposLavadoPrenda[prendaALavar] == tiempoMaxDeLavado){
+            if(prendasEnLavarropa[prendaALavar] == 0 && tiemposLavadoPrenda[prendaALavar] >= (tiempoMaxDeLavado-2)){
                 for (int i = 0; i < sizeTxt; i++)
                 {
                     lavarropasPosibles[i] = 1; //Pongo en 1 a todos los lavarropas para que esten disponibles
