@@ -9,9 +9,9 @@ int main(int argc, char *argv[])
     int matrix[sizeTxt][sizeTxt];
     int tiemposLavadoPrenda[sizeTxt];
     int tiemposLavadoLavarropa[sizeTxt];
-    for (int i = 0; i < sizeTxt; i++)
+    for (int i = sizeTxt; i > 0; i--)
     {
-        for (int j = 0; j < 385; j++)
+        for (int j = 0; j < sizeTxt; j++)
         {
             matrix[i][j] = 1;
         }
