@@ -1,0 +1,29 @@
+- Impresion inicial del problema: Es un problema en donde se necesita hacer un lavado de 385 prendas en lavadoras
+ en el menor tiempo posible, sabiendo que no todas las prendas se pueden lavar juntas. Es un buen ejercicio para 
+ practicar optimizar soluciones aplicandolo a una situacion real. Un ejercicio muy entretenido que te hace 
+ romperte la cabeza para lograr la mejor solucion
+
+-Ideas de como lo van a intentar resolver: 
+    Lo primero que se me ocurrio fue obtener los lavarropas disponibles para cada prenda e ir colocando la prenda
+en el lavarropa que ya tenia mas tiempo ya que o bien no tendria que sumarle tiempo a ese lavarropas o bien
+le estaria sumando menos tiempo. Aunque estaba segura que era una muy buena solucion me sorprendi al ver que de
+mi puntaje inicial de 755 solo baje a 736
+    Luego pense en que las prendas que mas perjudicaban a mi objetivo eran las que mayor tiempo de lavado 
+requerian, entonces decidi empezar por colocar las prendas de mayor tiempo en los lavarropas, ya que esos eran
+los casos en donde nunca iba a poder mejorar nada. Y luego colocaria el resto de las prendas, de mayor tiempo de
+lavado al menor tiempo en los lavarropas compatibles. Asi fue como logre un puntaje de 497
+    Luego pense en que tal vez agregando una prenda a un lavarropas le estaba quitando la posibilidad de agregar
+otra prenda entonces pense en hacer random el orden de las prendas a agregar pero no logre optimizar mi algoritmo
+
+
+-Comentarios sobre los cambios que hagan en el codigo a medida que intentan mejorar el resultado:
+    Para mi primera idea lo implemente con un array en donde guardaba los lavarropas posibles en donde podia
+colocar la prenda y finalmente colocaba la prenda en el lavarropas que mas tiempo tardaba hasta ese momento
+    Para mi segunda idea lo que hice fue ir colocando las prendas de mayor tiempo a menor tiempo en lavarropas
+    Para mi tercera idea intente implementarlo generando numeros random para elegir el orden en que iba a ir 
+colocando las prendas en los distintos lavarropas
+
+-Comentarios finales: Luego de varias pruebas, intentando optimizar mi algoritmo para agrupar las prendas y 
+lograr un tiempo de lavado menor, no pude obtener un mejor resultado pero al menos logre avanzar bastante
+desde mi punto de partida ya que yo estaba segura que mi primera idea era la mejor, pero logre abrir el problema 
+y encontrarle unas vueltas mas.
