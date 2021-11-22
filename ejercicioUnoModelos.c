@@ -9,6 +9,8 @@ int main(int argc, char *argv[])
     int matrix[sizeTxt][sizeTxt];
     int tiemposLavadoPrenda[sizeTxt];
     int tiemposLavadoLavarropa[sizeTxt];
+    int cantidadPrendasEnLavarropas[sizeTxt];
+
     int tiempoMaxDeLavado = 0;
     for (int i = sizeTxt; i > 0; i--)
     {
@@ -18,6 +20,7 @@ int main(int argc, char *argv[])
         }
         prendasEnLavarropa[i] = 0;     //A todas las prendas las pongo como que todavia no tienen asignadas ningun lavarropas
         tiemposLavadoLavarropa[i] = 0; //A todos los lavarropas los pongo como que su tiempo de lavado es cero
+        cantidadPrendasEnLavarropas[i] = 0;
     }
     char line[1000];
     FILE *laundryFile = fopen("lavanderia2.txt", "r");
@@ -37,19 +40,21 @@ int main(int argc, char *argv[])
         if (caracter == 'n')
         { //n n1 c1 "n1" es el número de prenda y "c1" el tiempo de lavado
             sscanf(line, "%c %d %d", &caracter, &param1, &param2);
-            tiemposLavadoPrenda[param1 - 1] = param2;
-
-            if(tiempoMaxDeLavado < param2){
-                tiempoMaxDeLavado = param2;
+            int tiempo = param2;
+            if(tiempoMaxDeLavado < tiempo){
+                tiempoMaxDeLavado = tiempo;
             }
+            tiemposLavadoPrenda[param1 - 1] = tiempo;
+            //printf("La prenda: %d tiene tiempo %d \n", param1-1, tiempo);
+            
         }
     }
-
-    for(tiempoMaxDeLavado; tiempoMaxDeLavado >= 0; tiempoMaxDeLavado--){
+     for(tiempoMaxDeLavado = 20; tiempoMaxDeLavado >= 0; tiempoMaxDeLavado-=1){
+        printf("tiempoMax: %d \n", tiempoMaxDeLavado);
 
         int lavarropasPosibles[sizeTxt];
         for(int prendaALavar = 0; prendaALavar < sizeTxt; prendaALavar++){
-            if(prendasEnLavarropa[prendaALavar] == 0 && tiemposLavadoPrenda[prendaALavar] >= (tiempoMaxDeLavado-2)){
+            if(prendasEnLavarropa[prendaALavar] == 0 && tiemposLavadoPrenda[prendaALavar] >= (tiempoMaxDeLavado)){
                 for (int i = 0; i < sizeTxt; i++)
                 {
                     lavarropasPosibles[i] = 1; //Pongo en 1 a todos los lavarropas para que esten disponibles
@@ -70,13 +75,17 @@ int main(int argc, char *argv[])
                     k = k + 1;
                 }
                 prendasEnLavarropa[prendaALavar] = k;
+                if(tiemposLavadoLavarropa[k-1] < tiemposLavadoPrenda[prendaALavar]){
+                    //Debo sumarle el tiempo extra que le costara lavar esta prenda
+                    tiemposLavadoLavarropa[k-1] += (tiemposLavadoPrenda[prendaALavar] - tiemposLavadoLavarropa[k-1]);
+                }
             }
         }
     }
-
-
-
-    
+    int sumatoriaTiempos = 0;
+    for(int i = 0; i < sizeTxt; i ++){
+        sumatoriaTiempos += tiemposLavadoLavarropa[i];
+    }
 
     FILE *out_file = fopen("prendasYLavados.txt", "w"); // write only
 
@@ -91,7 +100,9 @@ int main(int argc, char *argv[])
     for (int i = 0; i < sizeTxt; i++)
     {
         printf("Prenda: %d en lavarropas: %d \n", i + 1, prendasEnLavarropa[i]);
+        printf("Tiempo de lavarropas %d\n", sumatoriaTiempos);
         fprintf(out_file, "%d %d\n", i + 1, prendasEnLavarropa[i]); // write to file
+
     }
 
     return 0;
