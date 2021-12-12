@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "leer_dimac.h": "c",
+        "math.h": "c",
+        "string.h": "c"
+    }
+}

@@ -1,0 +1,44 @@
+- Ideas de como van a resolver esta instancia
+- Comentarios sobre el impacto de los pasos que van aplicando
+- Ccomentarios finales
+- Una hoja maximo
+
+Primero seguire los pasos propuestos en el enunciado asumiendo que mi heuristica propuesta en el tp2 no era la optima.
+
+1) Prueben correr el codigo sin cambios
+
+Corriendo el codigo sin ningun cambio tarda muchisimo tiempo, tal vez llegue a la solucion optima 
+pero es inviable la cantidad de tiempo que esta corriendo.
+El programa termino de ejecutarse a los 1800.23 segundos, (30 minutos). Con un optimo de 96, con 
+lo cual sabiendo que en realidad el optimo es 91, la ejecucion no logro llegar al optimo real
+
+2) Mejora sobre buscarSolucionInicial
+	a) Obtengan una solucion aproximada usando la heuristica desarrollada para la entrega anterior
+	b) Hardcodeen esa solucion para que el metodo buscarSolucionInicial la devuelva
+
+Luego de correr mi codigo del TP2 con el nuevo archivo de prendas provisto, y hardcodearlo en la 
+funcion buscarSolucionInicial() en el archivo lhk_branch_and_cut.c llegue a obtener un optimo de 95, 
+bastante cerca del puntaje optimo, aunque no lo iguala.
+Esto fue luego de otros 1800,23 segundos donde el programa solo termino el proceso.
+
+(Adjunto una parte de lo que se fue imprimiendo por consola en entrega_3_Paso2.txt)
+
+
+3) Modifiquen el maxColor a la cantidad de lavados de la solucion obtenida en 2a
+
+Una vez modificado el maxColor observe una gran mejora llegando al valor optimo 91, aunque el tiempo
+de ejecucion continuo siendo el mismo (1800,23 segundos)
+Si bien es una gran mejora, el tiempo sigue siendo inviable, un programa no es optimo si tarda 30 minutos
+en lograr resolver un problema de esta magnitud.
+
+(Adjunto una parte de lo que se fue imprimiendo por consola en entrega_3_Paso3.txt)
+
+4) Prueben agregar la siguiente restriccion: (Codigo)
+
+Luego de correr el programa con la nueva restriccion obtuve un resultado casi inmediato en comparacion
+a las otras ejecuciones.
+Logre llegar al optimo (91) en un tiempo de 82,52 segundos. Ahora si puedo decir que el alogritmos 
+mejoro considerablemente ya que no solo llega al optimo sino que lo hace implementando un tiempo
+acorde al problema.
+
+(Adjunto una parte de lo que se fue imprimiendo por consola en entrega_3_Paso4.txt)
